@@ -16,16 +16,16 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center py-12">
-          <ShoppingBag className="w-24 h-24 mx-auto text-gray-400 mb-4" />
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">Your cart is empty</h2>
-          <p className="text-gray-500 mb-8">Add some products to get started!</p>
+      <div className="container mx-auto px-6 py-16">
+        <div className="text-center py-16 bg-white/70 backdrop-blur-lg rounded-xl shadow-lg">
+          <ShoppingBag className="w-24 h-24 mx-auto text-gray-400 mb-6 animate-bounce" />
+          <h2 className="text-3xl font-bold text-gray-700 mb-4">Your cart is empty</h2>
+          <p className="text-gray-500 mb-8 text-lg">Add some products to get started!</p>
           <Link
             to="/"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center space-x-2"
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-md hover:scale-105 hover:shadow-lg transition-transform"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-5 h-5" />
             <span>Continue Shopping</span>
           </Link>
         </div>
@@ -34,23 +34,26 @@ const Cart = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
-        <Link to="/" className="flex items-center text-blue-600 hover:text-blue-800">
-          <ArrowLeft className="w-4 h-4 mr-2" />
+    <div className="container mx-auto px-6 py-12">
+      <div className="flex flex-col lg:flex-row items-start justify-between mb-10">
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-6 lg:mb-0">Shopping Cart</h1>
+        <Link
+          to="/"
+          className="flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
           Continue Shopping
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Cart Items */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-6">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Items ({cartItems.length})</h2>
+            <h2 className="text-2xl font-semibold text-gray-800">Items ({cartItems.length})</h2>
             <button
               onClick={handleClearCart}
-              className="text-red-600 hover:text-red-800 text-sm font-medium"
+              className="text-red-600 hover:text-red-800 text-sm font-semibold transition-colors"
             >
               Clear Cart
             </button>
@@ -63,24 +66,24 @@ const Cart = () => {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-gray-50 rounded-lg p-6 sticky top-24">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+          <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 shadow-lg sticky top-28">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Order Summary</h2>
             
-            <div className="space-y-3 mb-4">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="font-semibold">${cartTotal.toFixed(2)}</span>
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between text-gray-600">
+                <span>Subtotal</span>
+                <span className="font-semibold text-gray-900">${cartTotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
+              <div className="flex justify-between text-gray-600">
+                <span>Shipping</span>
                 <span className="font-semibold text-green-600">Free</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Tax</span>
-                <span className="font-semibold">${(cartTotal * 0.08).toFixed(2)}</span>
+              <div className="flex justify-between text-gray-600">
+                <span>Tax</span>
+                <span className="font-semibold text-gray-900">${(cartTotal * 0.08).toFixed(2)}</span>
               </div>
-              <div className="border-t pt-3">
-                <div className="flex justify-between text-lg font-bold">
+              <div className="border-t pt-4">
+                <div className="flex justify-between text-xl font-extrabold text-gray-900">
                   <span>Total</span>
                   <span>${(cartTotal * 1.08).toFixed(2)}</span>
                 </div>
@@ -89,16 +92,14 @@ const Cart = () => {
 
             <Link
               to="/checkout"
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors block text-center font-semibold"
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl text-center font-semibold shadow-md hover:scale-105 hover:shadow-lg transition-transform"
             >
               Proceed to Checkout
             </Link>
             
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-500">
-                Secure checkout with SSL encryption
-              </p>
-            </div>
+            <p className="mt-4 text-sm text-gray-500 text-center">
+              Secure checkout with SSL encryption
+            </p>
           </div>
         </div>
       </div>
