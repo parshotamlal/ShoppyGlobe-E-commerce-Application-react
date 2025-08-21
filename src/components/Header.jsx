@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ShoppingCart } from 'lucide-react';
 import { selectCartItemCount } from '../store/cartSlice';
-import { FaReact } from 'react-icons/fa'; // React icon import
+import { FaStore } from 'react-icons/fa'; // E-commerce store icon
 
 const Header = () => {
   const cartItemCount = useSelector(selectCartItemCount);
@@ -14,7 +14,8 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <FaReact className="w-10 h-10 text-blue-500" />
+            <FaStore className="w-10 h-10 text-blue-600" />
+            <span className="ml-2 text-2xl font-bold text-gray-800">ShoppyGlobe</span>
           </Link>
 
           {/* Navigation */}
