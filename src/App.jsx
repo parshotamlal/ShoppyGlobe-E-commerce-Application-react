@@ -23,7 +23,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-500">
           <Header />
           <Suspense fallback={<Loading />}>
             <Routes>

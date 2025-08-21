@@ -53,7 +53,7 @@ const Cart = () => {
             <h2 className="text-2xl font-semibold text-gray-800">Items ({cartItems.length})</h2>
             <button
               onClick={handleClearCart}
-              className="text-red-600 hover:text-red-800 text-sm font-semibold transition-colors"
+              className="text-white hover:text-black text-sm font-semibold transition-colors"
             >
               Clear Cart
             </button>
