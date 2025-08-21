@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, ArrowLeft } from 'lucide-react';
+import { TbShoppingBagHeart } from "react-icons/tb";
 import CartItem from './CartItem';
 import { selectCartItems, selectCartTotal, clearCart } from '../store/cartSlice';
 
@@ -18,14 +18,14 @@ const Cart = () => {
     return (
       <div className="container mx-auto px-6 py-16">
         <div className="text-center py-16 bg-white/70 backdrop-blur-lg rounded-xl shadow-lg">
-          <ShoppingBag className="w-24 h-24 mx-auto text-gray-400 mb-6 animate-bounce" />
+          <TbShoppingBagHeart className="w-24 h-24 mx-auto text-gray-400 bg-pink-200 rounded mb-6 animate-bounce" />
           <h2 className="text-3xl font-bold text-gray-700 mb-4">Your cart is empty</h2>
           <p className="text-gray-500 mb-8 text-lg">Add some products to get started!</p>
           <Link
             to="/"
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-md hover:scale-105 hover:shadow-lg transition-transform"
           >
-            <ArrowLeft className="w-5 h-5" />
+          
             <span>Continue Shopping</span>
           </Link>
         </div>

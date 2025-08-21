@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ShoppingCart } from 'lucide-react';
 import { selectCartItemCount } from '../store/cartSlice';
-import { FaStore } from 'react-icons/fa'; // E-commerce store icon
+import { CiShop } from "react-icons/ci"; // E-commerce store icon
 
 const Header = () => {
   const cartItemCount = useSelector(selectCartItemCount);
@@ -14,7 +14,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <FaStore className="w-10 h-10 text-blue-600" />
+            <CiShop className="w-10 h-10 text-blue-600" />
             <span className="ml-2 text-2xl font-bold text-gray-800">ShoppyGlobe</span>
           </Link>
 
@@ -43,7 +43,7 @@ const Header = () => {
           {/* Cart Button */}
           <Link
             to="/cart"
-            className="relative flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform"
+            className="relative flex items-center gap-2 bg-gradient-to-r from-blue-700 to-indigo-800 text-white px-5 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform"
           >
             <ShoppingCart className="w-5 h-5" />
             <span className="hidden sm:inline font-semibold">Cart</span>

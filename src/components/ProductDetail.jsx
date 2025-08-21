@@ -3,6 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ArrowLeft, Plus, Star, Truck, Shield, RefreshCcw } from 'lucide-react';
 import { addToCart } from '../store/cartSlice';
+import { CiDeliveryTruck } from "react-icons/ci";
+import { FaShieldAlt } from "react-icons/fa";
+import { LuRefreshCcwDot } from "react-icons/lu";
+
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -58,7 +63,7 @@ const ProductDetail = () => {
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded max-w-md mx-auto">
             <h3 className="font-semibold mb-2">Error Loading Product</h3>
             <p>{error}</p>
-            <Link to="/" className="mt-3 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <Link to="/" className="mt-3 inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-900">
               Back to Home
             </Link>
           </div>
@@ -82,7 +87,7 @@ const ProductDetail = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link to="/" className="flex items-center text-blue-600 hover:text-blue-800 mb-6">
+      <Link to="/" className="flex items-center text-blue-700 hover:text-blue-900 mb-6">
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to Products
       </Link>
@@ -118,11 +123,11 @@ const ProductDetail = () => {
         {/* Product Info */}
         <div className="space-y-6">
           <div>
-            <p className="text-sm text-blue-600 font-semibold uppercase tracking-wide">
+            <p className="text-sm text-blue-900 font-semibold uppercase tracking-wide">
               {product.category}
             </p>
-            <h1 className="text-3xl font-bold text-gray-900 mt-2">{product.title}</h1>
-            <p className="text-gray-600 mt-4">{product.description}</p>
+            <h1 className="text-3xl font-bold text-black mt-2">{product.title}</h1>
+            <p className="text-gray-700 mt-4">{product.description}</p>
           </div>
 
           {/* Rating */}
@@ -155,6 +160,7 @@ const ProductDetail = () => {
   </div>
 </div>
 
+
           {/* Stock */}
           <div className="flex items-center space-x-2">
             <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
@@ -181,16 +187,16 @@ const ProductDetail = () => {
           {/* Features */}
           <div className="border-t pt-6 space-y-4">
             <div className="flex items-center space-x-3">
-              <Truck className="w-5 h-5 text-green-600" />
-              <span className="text-gray-700">Free shipping on orders over $50</span>
+              <CiDeliveryTruck  className="w-5 h-5 text-green-600" />
+              <span className="text-gray-700 bold">Free shipping on orders over 499</span>
             </div>
             <div className="flex items-center space-x-3">
-              <Shield className="w-5 h-5 text-green-600" />
-              <span className="text-gray-700">2 year warranty</span>
+              <FaShieldAlt className="w-5 h-5 text-green-600" />
+              <span className="text-gray-700 bold">1 year warranty</span>
             </div>
             <div className="flex items-center space-x-3">
-              <RefreshCcw className="w-5 h-5 text-green-600" />
-              <span className="text-gray-700">30 day return policy</span>
+              <LuRefreshCcwDot className="w-5 h-5 text-green-600" />
+              <span className="text-gray-700 bold">7 day return policy</span>
             </div>
           </div>
         </div>

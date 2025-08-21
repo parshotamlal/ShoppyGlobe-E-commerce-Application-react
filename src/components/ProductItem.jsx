@@ -14,7 +14,7 @@ const ProductItem = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+    <div className="bg-red-200 rounded-lg shadow-md border hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
       <Link to={`/product/${product.id}`}>
         <div className="relative">
           <img

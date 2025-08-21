@@ -2,11 +2,12 @@ import React from "react";
 import Slider from "react-slick";
 import ProductList from "../components/ProductList";
 
-// Slider data (अब सिर्फ captions रहेंगे)
+// Slider data 
 const sliderImages = [
   { id: 1, caption: "Latest Fashion Deals" },
   { id: 2, caption: "Trending Gadgets Worldwide" },
   { id: 3, caption: "Shoes at Unbelievable Prices" },
+  { id: 4, caption: "Offers on Electornics"},
 ];
 
 import "slick-carousel/slick/slick.css";
