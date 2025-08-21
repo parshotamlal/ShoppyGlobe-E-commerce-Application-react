@@ -10,7 +10,13 @@ const CheckoutPage = () => {
   const dispatch = useDispatch();
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderCompleted, setOrderCompleted] = useState(false);
-  
+
+  // 💰 USD → INR conversion
+  const conversionRate = 83; // 1 USD = ₹83
+  const cartTotalInINR = cartTotal * conversionRate;
+  const tax = cartTotal * 0.08 * conversionRate;
+  const total = cartTotalInINR + tax;
+
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -72,9 +78,6 @@ const CheckoutPage = () => {
       </div>
     );
   }
-
-  const tax = cartTotal * 0.08;
-  const total = cartTotal + tax;
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -247,7 +250,7 @@ const CheckoutPage = () => {
                 disabled={isProcessing}
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold text-lg"
               >
-                {isProcessing ? 'Processing...' : `Complete Order - $${total.toFixed(2)}`}
+                {isProcessing ? 'Processing...' : `Complete Order - ₹${total.toFixed(2)}`}
               </button>
             </form>
           </div>
@@ -269,7 +272,9 @@ const CheckoutPage = () => {
                       <p className="font-medium text-sm">{item.title}</p>
                       <p className="text-gray-600 text-sm">Qty: {item.quantity}</p>
                     </div>
-                    <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="font-semibold">
+                      ₹{(item.price * conversionRate * item.quantity).toFixed(2)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -277,7 +282,7 @@ const CheckoutPage = () => {
               <div className="border-t pt-4 space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
-                  <span>${cartTotal.toFixed(2)}</span>
+                  <span>₹{cartTotalInINR.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping</span>
@@ -285,11 +290,11 @@ const CheckoutPage = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Tax</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <span>₹{tax.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-lg font-bold border-t pt-2">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
               </div>
             </div>

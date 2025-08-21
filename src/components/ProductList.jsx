@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Search, Loader } from 'lucide-react';
 import useProducts from '../hooks/useProducts';
 import ProductItem from './ProductItem';
-import { setSearchQuery, setFilteredProducts, selectSearchQuery, selectFilteredProducts } from '../store/searchSlice';
+import { 
+  setSearchQuery, 
+  setFilteredProducts, 
+  selectSearchQuery, 
+  selectFilteredProducts 
+} from '../store/searchSlice';
 
 const ProductList = () => {
   const { products, loading, error } = useProducts();
@@ -69,7 +74,9 @@ const ProductList = () => {
       {/* Results Count */}
       <div className="mb-6">
         <p className="text-gray-600">
-          {searchQuery ? `Found ${filteredProducts.length} results for "${searchQuery}"` : `Showing ${products.length} products`}
+          {searchQuery 
+            ? `Found ${filteredProducts.length} results for "${searchQuery}"` 
+            : `Showing ${products.length} products`}
         </p>
       </div>
 

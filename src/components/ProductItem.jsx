@@ -48,10 +48,10 @@ const ProductItem = ({ product }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-blue-600">
-                ${product.price}
+                ₹{(product.price * 83).toFixed(2)}
               </span>
               <span className="text-sm text-gray-500 line-through">
-                ${(product.price / (1 - product.discountPercentage / 100)).toFixed(2)}
+                ₹{((product.price / (1 - product.discountPercentage / 100)) * 83).toFixed(2)}
               </span>
             </div>
             

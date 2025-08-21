@@ -141,17 +141,19 @@ const ProductDetail = () => {
           </div>
 
           {/* Price */}
-          <div className="space-y-2">
-            <div className="flex items-center space-x-3">
-              <span className="text-3xl font-bold text-blue-600">${product.price}</span>
-              <span className="text-lg text-gray-500 line-through">
-                ${(product.price / (1 - product.discountPercentage / 100)).toFixed(2)}
-              </span>
-              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-semibold">
-                {product.discountPercentage}% OFF
-              </span>
-            </div>
-          </div>
+ <div className="space-y-2">
+  <div className="flex items-center space-x-3">
+    <span className="text-3xl font-bold text-blue-600">
+      ₹{(product.price * 83).toFixed(2)}
+    </span>
+    <span className="text-lg text-gray-500 line-through">
+      ₹{((product.price / (1 - product.discountPercentage / 100)) * 83).toFixed(2)}
+    </span>
+    <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-semibold">
+      {product.discountPercentage}% OFF
+    </span>
+  </div>
+</div>
 
           {/* Stock */}
           <div className="flex items-center space-x-2">

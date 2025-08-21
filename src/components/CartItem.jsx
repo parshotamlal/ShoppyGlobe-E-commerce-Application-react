@@ -5,6 +5,7 @@ import { updateQuantity, removeFromCart } from '../store/cartSlice';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
+  const inrRate = 83; // 1 USD ≈ ₹83
 
   const handleUpdateQuantity = (newQuantity) => {
     dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
@@ -25,7 +26,11 @@ const CartItem = ({ item }) => {
       <div className="flex-grow text-center sm:text-left">
         <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
         <p className="text-gray-600 text-sm mb-2 line-clamp-2">{item.description}</p>
-        <p className="text-blue-600 font-bold">${item.price}</p>
+        
+        {/* Single item price in INR */}
+        <p className="text-blue-600 font-bold">
+          ₹{(item.price * inrRate).toFixed(2)}
+        </p>
       </div>
       
       <div className="flex items-center space-x-3">
@@ -55,8 +60,9 @@ const CartItem = ({ item }) => {
       </div>
       
       <div className="text-right">
+        {/* Total Price in INR */}
         <p className="font-bold text-lg text-gray-900">
-          ${(item.price * item.quantity).toFixed(2)}
+          ₹{(item.price * item.quantity * inrRate).toFixed(2)}
         </p>
       </div>
     </div>
