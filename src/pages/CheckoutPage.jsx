@@ -11,8 +11,8 @@ const CheckoutPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderCompleted, setOrderCompleted] = useState(false);
 
-  // 💰 USD → INR conversion
-  const conversionRate = 83; // 1 USD = ₹83
+  // USD → INR conversion
+  const conversionRate = 87; // 1 USD = ₹83
   const cartTotalInINR = cartTotal * conversionRate;
   const tax = cartTotal * 0.08 * conversionRate;
   const total = cartTotalInINR + tax;
@@ -83,7 +83,6 @@ const CheckoutPage = () => {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <Link to="/cart" className="flex items-center text-blue-600 hover:text-blue-800 mb-6">
-          <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Cart
         </Link>
 
@@ -93,165 +92,168 @@ const CheckoutPage = () => {
           {/* Checkout Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Contact Information */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      required
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-              </div>
+         {/* Contact Information */}
+<div className="bg-gray-50 rounded-lg shadow-md p-6">
+  <h2 className="text-xl font-semibold mb-4 text-gray-800">Contact Information</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label className="block text-sm font-medium text-gray-600 mb-1">
+        First Name
+      </label>
+      <input
+        type="text"
+        name="firstName"
+        required
+        value={formData.firstName}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+      />
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-600 mb-1">
+        Last Name
+      </label>
+      <input
+        type="text"
+        name="lastName"
+        required
+        value={formData.lastName}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+      />
+    </div>
+  </div>
+  <div className="mt-4">
+    <label className="block text-sm font-medium text-gray-600 mb-1">
+      Email Address
+    </label>
+    <input
+      type="email"
+      name="email"
+      required
+      value={formData.email}
+      onChange={handleInputChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+    />
+  </div>
+</div>
 
               {/* Shipping Address */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Street Address
-                    </label>
-                    <input
-                      type="text"
-                      name="address"
-                      required
-                      value={formData.address}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        name="city"
-                        required
-                        value={formData.city}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Postal Code
-                      </label>
-                      <input
-                        type="text"
-                        name="postalCode"
-                        required
-                        value={formData.postalCode}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+<div className="bg-gray-50 rounded-lg shadow-md p-6">
+  <h2 className="text-xl font-semibold mb-4 text-gray-800">Shipping Address</h2>
+  <div className="space-y-4">
+    <div>
+      <label className="block text-sm font-medium text-gray-600 mb-1">
+        Street Address
+      </label>
+      <input
+        type="text"
+        name="address"
+        required
+        value={formData.address}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+      />
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          City
+        </label>
+        <input
+          type="text"
+          name="city"
+          required
+          value={formData.city}
+          onChange={handleInputChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Postal Code
+        </label>
+        <input
+          type="number"
+          name="postalCode"
+          required
+          value={formData.postalCode}
+          onChange={handleInputChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 
-              {/* Payment Information */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-semibold mb-4 flex items-center">
-                  <CreditCard className="w-5 h-5 mr-2" />
-                  Payment Information
-                </h2>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Card Number
-                    </label>
-                    <input
-                      type="text"
-                      name="cardNumber"
-                      required
-                      placeholder="1234 5678 9012 3456"
-                      value={formData.cardNumber}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Expiry Date
-                      </label>
-                      <input
-                        type="text"
-                        name="expiry"
-                        required
-                        placeholder="MM/YY"
-                        value={formData.expiry}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        CVV
-                      </label>
-                      <input
-                        type="text"
-                        name="cvv"
-                        required
-                        placeholder="123"
-                        value={formData.cvv}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center text-sm text-gray-600">
-                  <Lock className="w-4 h-4 mr-2" />
-                  Your payment information is secure and encrypted
-                </div>
-              </div>
+
+ {/* Payment Information */}
+<div className="bg-gray-50 rounded-lg shadow-md p-6">
+  <h2 className="text-xl font-semibold mb-4 flex items-center text-gray-800">
+    <CreditCard className="w-5 h-5 mr-2 text-blue-500" />
+    Payment Information
+  </h2>
+  <div className="space-y-4">
+    <div>
+      <label className="block text-sm font-medium text-gray-600 mb-1">
+        Card Number
+      </label>
+      <input
+        type="number"
+        name="cardNumber"
+        required
+        placeholder="1234 5678 9012 3456"
+        value={formData.cardNumber}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+      />
+    </div>
+    <div className="grid grid-cols-2 gap-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Expiry Date
+        </label>
+        <input
+          type="number"
+          name="expiry"
+          required
+          placeholder="MM/YY"
+          value={formData.expiry}
+          onChange={handleInputChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          CVV
+        </label>
+        <input
+          type="number"
+          name="cvv"
+          required
+          placeholder="123"
+          value={formData.cvv}
+          onChange={handleInputChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 bg-white text-gray-800"
+        />
+      </div>
+    </div>
+  </div>
+  <div className="mt-4 flex items-center text-sm text-gray-500">
+    <Lock className="w-4 h-4 mr-2 text-gray-400" />
+    Your payment information is secure and encrypted
+  </div>
+</div>
+
 
               <button
-                type="submit"
-                disabled={isProcessing}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold text-lg"
-              >
-                {isProcessing ? 'Processing...' : `Complete Order - ₹${total.toFixed(2)}`}
-              </button>
+  type="submit"
+  disabled={isProcessing}
+  className="w-full bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed font-semibold text-lg shadow-md transition-all transform hover:-translate-y-0.5"
+>
+  {isProcessing ? 'Processing...' : `Complete Order - ₹${total.toFixed(2)}`}
+</button>
+
             </form>
           </div>
 

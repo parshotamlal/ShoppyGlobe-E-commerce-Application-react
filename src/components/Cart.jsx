@@ -16,7 +16,7 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-6 py-16 bg-pink-100">
         <div className="text-center py-16 bg-white/70 backdrop-blur-lg rounded-xl shadow-lg">
           <TbShoppingBagHeart className="w-24 h-24 mx-auto text-gray-400 bg-pink-200 rounded mb-6 animate-bounce" />
           <h2 className="text-3xl font-bold text-gray-700 mb-4">Your cart is empty</h2>
@@ -41,7 +41,6 @@ const Cart = () => {
           to="/"
           className="flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
         >
-          <ArrowLeft className="w-5 h-5 mr-2" />
           Continue Shopping
         </Link>
       </div>
@@ -49,8 +48,8 @@ const Cart = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-semibold text-gray-800">Items ({cartItems.length})</h2>
+          <div className="flex justify-between items-center"> 
+            <h2 className="text-2xl font-semibold text-gray-800 bg-pink-50">Items ({cartItems.length})</h2>
             <button
               onClick={handleClearCart}
               className="text-white hover:text-black text-sm font-semibold transition-colors"
@@ -66,13 +65,13 @@ const Cart = () => {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white/90 backdrop-blur-md rounded-xl p-6 shadow-lg sticky top-28">
+          <div className="bg-pink-50 backdrop-blur-md rounded-xl p-6 shadow-lg sticky top-28">
             <h2 className="text-2xl font-bold mb-6 text-gray-800">Order Summary</h2>
             
             <div className="space-y-4 mb-6">
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal</span>
-                <span className="font-semibold text-gray-900">₹{cartTotal.toFixed(2)}</span>
+                <span className="font-semibold text-gray-900">₹{(cartTotal *87).toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Shipping</span>
@@ -80,12 +79,12 @@ const Cart = () => {
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Tax</span>
-                <span className="font-semibold text-gray-900">₹{(cartTotal * 0.08).toFixed(2)}</span>
+                <span className="font-semibold text-gray-900">₹{(cartTotal * 0.08 *87).toFixed(2)}</span>
               </div>
               <div className="border-t pt-4">
                 <div className="flex justify-between text-xl font-extrabold text-gray-900">
                   <span>Total</span>
-                  <span>₹{(cartTotal * 1.08).toFixed(2)}</span>
+                  <span>₹{(cartTotal * 1.08 * 87).toFixed(2)}</span>
                 </div>
               </div>
             </div>

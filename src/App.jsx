@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy,useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -13,11 +13,23 @@ const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
 // Loading component
-const Loading = () => (
-  <div className="flex justify-center items-center h-64">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-  </div>
-);
+const Loading = () => {
+  const [red, setRed] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setRed(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <div className="flex flex-col justify-center items-center h-64">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <p className={`mt-4 ${red ? "text-red-600" : "text-gray-600"}`}>
+        Loading...
+      </p>
+    </div>
+  );
+};
 
 function App() {
   return (

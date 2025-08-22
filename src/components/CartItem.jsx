@@ -5,7 +5,7 @@ import { updateQuantity, removeFromCart } from '../store/cartSlice';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
-  const inrRate = 83; // 1 USD ≈ ₹83
+  const inrRate = 87; // 1 USD ≈ ₹87
 
   const handleUpdateQuantity = (newQuantity) => {
     dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
@@ -53,7 +53,7 @@ const CartItem = ({ item }) => {
         
         <button
           onClick={handleRemove}
-          className="p-2 text-black hover:bg-red-50 rounded-lg"
+          className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
         >
           <Trash2 className="w-5 h-5" />
         </button>
