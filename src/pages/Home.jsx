@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import {Footer} from "./Footer";
 import ProductList from "../components/ProductList";
 
 // Slider data 
@@ -60,6 +61,14 @@ const Home = () => {
           <ProductList />
         </div>
       </section>
+
+      
+      {/* Footer always at bottom */}
+     <div>
+  
+      <Footer />
+     </div>
+
     </div>
   );
 };
