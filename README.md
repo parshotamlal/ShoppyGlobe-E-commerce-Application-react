@@ -15,6 +15,7 @@ This project provides an **intuitive shopping experience** and demonstrates **re
 - Detailed product information is displayed on the product detail page.
 - Cart shows added items with options to update quantity or remove items.
 - A 404 page is displayed for unmatched routes.
+- Footer added for additional project information and links.
 
 ### Props & Components
 - Props are used to pass data from parent to child components.
